@@ -152,7 +152,7 @@ function buildChecklist() {
     const top = el('div', 'checklist-top');
     top.append(el('span', 'checklist-label', row.label));
     top.append(
-      el('span', 'checklist-target', row.target === row.total ? `${row.target}` : `${row.target} / ${row.total}`),
+      el('span', 'checklist-target', `${row.target} / ${row.total}`),
     );
     item.append(top);
     const track = el('div', 'checklist-track');
@@ -160,7 +160,7 @@ function buildChecklist() {
     fill.style.width = `${Math.round((row.target / row.total) * 100)}%`;
     track.append(fill);
     item.append(track);
-    item.append(el('span', 'checklist-scope', row.scope === 'full' ? 'all of them' : 'partial'));
+    item.append(el('span', 'checklist-scope', row.scope === 'full' ? 'full clear' : 'partial'));
     grid.append(item);
   }
   wrap.append(grid);
@@ -347,6 +347,12 @@ function applyShot() {
   if (shot === 'spoiler') {
     state.spoiler = true;
     state.kind = 'story';
+    // Open an earned story trophy, so the pane shows the guard lifting on what you have earned
+    // while the rows around it stay masked. Falls back to any earned trophy of any kind.
+    const earnedStory = trophies.find((t) => t.kind === 'story' && state.earned.has(t.id));
+    const anyEarned = trophies.find((t) => state.earned.has(t.id));
+    const fallback = (earnedStory ?? anyEarned ?? trophies[0]).id;
+    state.selected = pick(fallback);
     return;
   }
   state.spoiler = false;

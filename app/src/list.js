@@ -88,12 +88,16 @@ export function renderList(trophies) {
 
     const group = document.createElement('section');
     group.className = 'group';
-    const earnedHere = inStage.filter((t) => state.earned.has(t.id)).length;
+    // The tally counts the whole stage, not just the rows the filter lets through, so a chapter
+    // reads the same here as it does on the roadmap and in the detail pane's "also in" strip.
+    const whole = trophies.filter((t) => t.stage === stage.key);
+    const earnedHere = whole.filter((t) => state.earned.has(t.id)).length;
 
     const head = document.createElement('header');
     head.className = 'group-head';
     head.append(text('h2', 'group-name', stage.name));
-    const tally = text('span', 'group-tally', `${earnedHere}/${inStage.length}`);
+    const tally = text('span', 'group-tally', `${earnedHere}/${whole.length}`);
+    if (inStage.length !== whole.length) tally.title = `${inStage.length} shown under this filter`;
     head.append(tally);
     group.append(head);
 
