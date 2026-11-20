@@ -123,31 +123,33 @@ export function totals(trophies, earned) {
   };
 }
 
-/** The 100% checklist as the guides state it: PowerPyx's list, plus Push Square's matches. */
+/** The 100% checklist as the guides state it: PowerPyx's list, plus Push Square's matches.
+ *  Labels are the shortest wording that still names the PowerPyx line, because the panel runs in
+ *  a narrow column where a long label truncates. */
 export const CHECKLIST = [
-  { label: 'Story completed', target: 1, total: 1 },
+  { label: 'Story', target: 1, total: 1 },
   { label: 'Optional tasks', target: 100, total: 100 },
   { label: 'Gang operations', target: 39, total: 39 },
   { label: 'Bank jobs', target: 22, total: 22 },
-  { label: 'Payday loan jobs', target: 7, total: 7 },
+  { label: 'Payday loans', target: 7, total: 7 },
   { label: 'Smash and grabs', target: 34, total: 35 },
   { label: 'Stick ups', target: 50, total: 91 },
-  { label: 'Vaults hit', target: 8, total: 8 },
+  { label: 'Vaults', target: 8, total: 8 },
   { label: 'Kenton sets', target: 5, total: 7 },
-  { label: 'Collectible card sets', target: 15, total: 18 },
+  { label: 'Card sets', target: 15, total: 18 },
   { label: 'WAiNK scans', target: 100, total: 100 },
-  { label: 'Underwater discoveries', target: 33, total: 33 },
+  { label: 'Underwater finds', target: 33, total: 33 },
   { label: 'Meditations', target: 15, total: 18 },
-  { label: 'Cocaine flamingos', target: 100, total: 125 },
-  { label: 'Discovered styles', target: 70, total: 79 },
-  { label: 'Unique races won', target: 30, total: 40 },
-  { label: 'Shooting range golds', target: 42, total: 42 },
-  { label: 'Basketball hoops', target: 90, total: 100 },
-  { label: 'Drone time trials', target: 42, total: 42 },
+  { label: 'Flamingos', target: 100, total: 125 },
+  { label: 'Styles found', target: 70, total: 79 },
+  { label: 'Races won', target: 30, total: 40 },
+  { label: 'Range golds', target: 42, total: 42 },
+  { label: 'Hoops', target: 90, total: 100 },
+  { label: 'Drone times', target: 42, total: 42 },
   { label: 'Stunts', target: 300, total: 397 },
   { label: 'Challenges', target: 70, total: 80 },
-  { label: "Bret's Target Decks", target: 15, total: 15 },
-  { label: 'Base model vehicles scanned', target: 200, total: 277 },
-  { label: 'Standard issue weapons', target: 50, total: 66 },
+  { label: 'Target Decks', target: 15, total: 15 },
+  { label: 'Vehicles scanned', target: 200, total: 277 },
+  { label: 'Weapons', target: 50, total: 66 },
   { label: 'Animals studied', target: 100, total: 255 },
 ];

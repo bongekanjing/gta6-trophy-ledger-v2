@@ -521,15 +521,19 @@ body {
 }
 .missable-go:hover { background: rgba(255, 107, 94, 0.18); }
 
-.checklist-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 16px; }
-.checklist-item { min-width: 0; }
-.checklist-top { display: flex; align-items: baseline; gap: 8px; }
-.checklist-label { font-size: 11px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.checklist-target { margin-left: auto; font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.checklist-track { height: 3px; border-radius: 2px; background: rgba(255, 255, 255, 0.07); margin: 4px 0 3px; overflow: hidden; }
+.checklist-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px 18px; }
+/* One line per target: name, count, then a bar that fills the rest of the row. */
+.checklist-item {
+  min-width: 0; display: grid; align-items: center;
+  grid-template-columns: minmax(0, 1fr) 62px 46px;
+  gap: 8px; font-size: 11px; line-height: 1.65;
+}
+.checklist-label { color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.checklist-track { height: 3px; border-radius: 2px; background: rgba(255, 255, 255, 0.07); overflow: hidden; }
 .checklist-track i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); }
 .checklist-item.is-full .checklist-track i { background: linear-gradient(90deg, var(--sunset), var(--gold)); }
-.checklist-scope { font-size: 8.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.checklist-target { font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums; text-align: right; }
+.checklist-item.is-full .checklist-target { color: var(--teal); }
 
 .rules-list { gap: 6px; }
 .rule { display: flex; gap: 8px; font-size: 10.8px; line-height: 1.4; color: var(--ink-2); }

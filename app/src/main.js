@@ -142,7 +142,7 @@ function buildChecklist() {
     el(
       'p',
       'panel-lede',
-      'The checklist appears only after the credits, but work done during the story already counts. Full clears are marked as such; the rest are partial targets, so you can skip the tail of each collectible.',
+      'The checklist appears only after the credits, but work done during the story already counts, so this is a to-do list and not a fresh start. A line whose two numbers match needs every one of its items; every other line only needs the number shown.',
     ),
   );
 
@@ -152,18 +152,14 @@ function buildChecklist() {
     // instead of hand-typing a scope that can disagree with the target it sits beside.
     const full = row.target >= row.total;
     const item = el('div', `checklist-item ${full ? 'is-full' : 'is-part'}`);
-    const top = el('div', 'checklist-top');
-    top.append(el('span', 'checklist-label', row.label));
-    top.append(
-      el('span', 'checklist-target', `${row.target} / ${row.total}`),
-    );
-    item.append(top);
+    item.append(el('span', 'checklist-label', row.label));
     const track = el('div', 'checklist-track');
     const fill = el('i');
     fill.style.width = `${Math.round((row.target / row.total) * 100)}%`;
     track.append(fill);
     item.append(track);
-    item.append(el('span', 'checklist-scope', full ? 'full clear' : 'partial'));
+    item.append(el('span', 'checklist-target', `${row.target}/${row.total}`));
+    item.title = full ? `${row.label}: needs every one of the ${row.total}` : `${row.label}: ${row.target} of ${row.total} is enough for the checklist`;
     grid.append(item);
   }
   wrap.append(grid);
