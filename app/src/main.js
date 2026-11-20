@@ -148,7 +148,10 @@ function buildChecklist() {
 
   const grid = el('div', 'checklist-grid');
   for (const row of CHECKLIST) {
-    const item = el('div', `checklist-item ${row.scope === 'full' ? 'is-full' : 'is-part'}`);
+    // Whether this line needs every one of its items is a fact about the numbers, so derive it
+    // instead of hand-typing a scope that can disagree with the target it sits beside.
+    const full = row.target >= row.total;
+    const item = el('div', `checklist-item ${full ? 'is-full' : 'is-part'}`);
     const top = el('div', 'checklist-top');
     top.append(el('span', 'checklist-label', row.label));
     top.append(
@@ -160,7 +163,7 @@ function buildChecklist() {
     fill.style.width = `${Math.round((row.target / row.total) * 100)}%`;
     track.append(fill);
     item.append(track);
-    item.append(el('span', 'checklist-scope', row.scope === 'full' ? 'full clear' : 'partial'));
+    item.append(el('span', 'checklist-scope', full ? 'full clear' : 'partial'));
     grid.append(item);
   }
   wrap.append(grid);

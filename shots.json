@@ -2,5 +2,5 @@
   { "file": "1-tracker.jpg", "path": "/?shot=tracker&demo=1", "viewport": { "width": 1280, "height": 900 } },
   { "file": "2-roadmap.jpg", "path": "/?shot=roadmap&demo=1", "viewport": { "width": 1280, "height": 900 } },
   { "file": "3-spoiler.jpg", "path": "/?shot=spoiler&demo=1", "viewport": { "width": 1280, "height": 900 } },
-  { "file": "4-guide.jpg", "path": "/?shot=guide&demo=1&id=28", "viewport": { "width": 1280, "height": 900 } }
+  { "file": "4-guide.jpg", "path": "/?shot=guide&demo=1&id=14", "viewport": { "width": 1280, "height": 900 } }
 ]
